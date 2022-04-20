@@ -1,4 +1,4 @@
-import React, {FormEvent, useState } from 'react';
+import React, {FormEvent, useCallback, useState } from 'react';
 import { SearchResults } from './components/SearchResults'
 
 
@@ -19,6 +19,10 @@ import { SearchResults } from './components/SearchResults'
     setResults(data)
   }
 
+  const addToWishlist = useCallback(async (id: number) => {
+    console.log(id);
+  }, [])
+
   return (
     <div>
       <h1>Search</h1>
@@ -31,7 +35,10 @@ import { SearchResults } from './components/SearchResults'
         <button type="submit">Buscar</button>
       </form>
 
-      <SearchResults results={results}/>
+      <SearchResults 
+        results={results}
+        onAddToWishlist={addToWishlist}
+      />
     </div>
   );
 }
